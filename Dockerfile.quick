@@ -1,0 +1,5 @@
+FROM osrf/ros2:nightly
+
+RUN useradd -m ros -g sudo -s /bin/bash && sudo su ros \
+    && echo "ros:ros" | chpasswd \ 
+    && echo "source /opt/ros/$ROS_DISTRO/setup.bash" > /home/ros/.bashrc
