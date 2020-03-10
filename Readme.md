@@ -9,9 +9,9 @@ This rep provides docker images and docker-compose files for quickly setting up 
 1. Install Docker CE and docker-compose
 2. Add your user to docker group [Link](https://docs.docker.com/install/linux/linux-postinstall/). 
 3. Edit /etc/docker/daemon.json to contain the following 
-   ` {
-    "dns": [<dns-1>, <dns-2>],
-    "insecure-registries": [<insecure local docker hub ip>]
+   ` { 
+    "dns": [<dns-1>, <dns-2>], 
+    "insecure-registries": [<insecure local docker hub ip:port>] 
     }
     `
 4. Restart docker 

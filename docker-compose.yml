@@ -21,10 +21,10 @@ services:
       - ros2-data:/opt/ros2_ws/
       - ./src:/opt/ros2_ws/src
       - /tmp/.X11-unix:/tmp/.X11-unix
-
     environment: 
       - ROS_DISTRO=dashing
       - DISPLAY=:0
+      - NODE_NAME=A
 
     command: sh -c "tail -F /dev/null"
 

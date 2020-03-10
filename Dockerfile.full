@@ -54,7 +54,6 @@ RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sud
     && sh -c 'echo "deb [arch=amd64,arm64] http://packages.ros.org/ros2/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list' \
     && apt update \
     && apt -y install tmux \
-    && apt -y install vim \ 
     && sudo apt -y install ros-dashing-desktop
 
 RUN sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
@@ -63,6 +62,8 @@ RUN sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF
     && apt-get -y install ros-dashing-turtlebot2* ros-melodic-kobuki-ftdi
 
 
-RUN useradd -m ros -g sudo -s /bin/bash && sudo su ros \
+RUN useradd -m ros -g ros -G sudo -s /bin/bash && sudo su ros \
     && echo "ros:ros" | chpasswd \ 
     && echo "source /opt/ros/$ROS_DISTRO/setup.bash" > /home/ros/.bashrc \
+    && sudo rosdep init \
+    && rosdep update
